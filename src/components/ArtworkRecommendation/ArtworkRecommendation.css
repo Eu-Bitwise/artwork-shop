@@ -1,0 +1,54 @@
+.recommendation-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.description-panel {
+    border: none !important;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    position: relative;
+}
+
+.scroll-icon {
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.scroll-container {
+    overflow-x: auto;
+    flex: 1;
+    display: flex;
+    /* Hide vertical scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 20px;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.artwork-image {
+    height: 200px;
+    width: 200px;
+    margin: 0 24px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 4px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.artwork-image:hover {
+    transform: scale(1.1);
+}

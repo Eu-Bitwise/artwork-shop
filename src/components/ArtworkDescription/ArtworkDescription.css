@@ -1,0 +1,56 @@
+/* Pannel styles */
+.artwork-description .ant-collapse-header {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.artwork-description .ant-collapse-item {
+    background-color: #fff;
+    border-bottom: none;
+    padding: 0px;
+}
+
+h4 {
+    margin-top: 10px;
+}
+
+.description-panel {
+    border: none !important;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    position: relative;
+}
+
+.description-panel::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Separating lines */
+    height: 2px;
+    background-color: #333;
+}
+
+/* Pannel item styles */
+
+.artwork-description-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.artwork-description-item .ant-typography {
+    margin: 0;
+}
+
+.artwork-description-item .ant-typography:last-child {
+    margin-left: 10px;
+}
+
+.artwork-description-item .ant-typography {
+    margin-top: 0 !important;
+    width: 100px;
+}
