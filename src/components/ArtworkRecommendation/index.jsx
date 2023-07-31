@@ -24,22 +24,31 @@ const ArtworkRecommendation = ({ artworks }) => {
             if (scrollContainer.current) {
                 // Set scrollPos to the current scroll position
                 setScrollPos(scrollContainer.current.scrollLeft);
-                // Set maxScrollPos to the maximum possible scroll position
+                // Set maxScrollPos to the maximum possible scroll position, minus a 5-pixel buffer
                 setMaxScrollPos(
                     scrollContainer.current.scrollWidth -
-                        scrollContainer.current.clientWidth,
+                        scrollContainer.current.clientWidth -
+                        5,
                 );
             }
         };
 
-        // Add scroll event listener if the ref is assigned
+        const onResize = () => {
+            updateScrollPos();
+        };
+
+        // Add scroll and resize event listeners
         if (scrollContainer.current) {
             scrollContainer.current.addEventListener('scroll', updateScrollPos);
+            window.addEventListener('resize', onResize);
         }
 
-        updateScrollPos(); // Update scrollPos and maxScrollPos initially
+        // Let the page load the images before calculating the scroll positions
+        const delayInMilliseconds = 1000;
+        // Update scrollPos and maxScrollPos initially
+        setTimeout(updateScrollPos, delayInMilliseconds);
 
-        // Cleanup: remove event listener when component unmounts
+        // Cleanup: remove event listeners when component unmounts
         return () => {
             if (scrollContainer.current) {
                 scrollContainer.current.removeEventListener(
@@ -47,6 +56,7 @@ const ArtworkRecommendation = ({ artworks }) => {
                     updateScrollPos,
                 );
             }
+            window.removeEventListener('resize', onResize);
         };
     }, []);
 
@@ -55,7 +65,7 @@ const ArtworkRecommendation = ({ artworks }) => {
             {scrollPos > 0 && (
                 // Display left arrow if not at the start of scroll
                 <FaChevronLeft
-                    onClick={() => scroll(-200)}
+                    onClick={() => scroll(-500)}
                     className="scroll-icon"
                 />
             )}
@@ -73,7 +83,7 @@ const ArtworkRecommendation = ({ artworks }) => {
             {scrollPos < maxScrollPos && (
                 // Display right arrow if not at the end of scroll
                 <FaChevronRight
-                    onClick={() => scroll(200)}
+                    onClick={() => scroll(500)}
                     className="scroll-icon"
                 />
             )}

@@ -20,8 +20,8 @@
     overflow-x: auto;
     flex: 1;
     display: flex;
-    /* Hide vertical scrollbar */
-    scrollbar-width: none;
+    /* Set scrollbar to auto for Firefox */
+    scrollbar-width: auto;
     -ms-overflow-style: none;
     padding-bottom: 20px;
 }
